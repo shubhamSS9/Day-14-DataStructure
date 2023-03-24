@@ -7,5 +7,6 @@ public class LinkedListMain {
         linkedList.add(30);
         linkedList.add(70);
         linkedList.display();
+
     }
 }
