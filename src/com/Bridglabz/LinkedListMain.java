@@ -7,7 +7,7 @@ public class LinkedListMain {
         linkedList1.append(30);
         linkedList1.append(70);
 
-        Integer poppedData1 = linkedList1.pop();
+        Integer poppedData1 = linkedList1.popLast();
         if (poppedData1 == null)
             System.out.println("Linked List is Empty");
         else
