@@ -8,7 +8,15 @@ public class Node<T> {
     }
 
     public Node(T data){
-        this.data = data;
+        this.setData(data);
 
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }
