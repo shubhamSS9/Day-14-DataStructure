@@ -13,12 +13,19 @@ public class LinkedListMain {
 //		else
 //			System.out.println("The element popped is => " + poppedData1);
 //
-        Node<Integer> searchedData = linkedList1.search(30);
-        if (searchedData == null) {
-            System.out.println("Element not found!");
-        } else {
-            System.out.println("Element Found");
-        }
+//		Node<Integer> searchedData = linkedList1.search(30);
+//        if (searchedData == null) {
+//            System.out.println("Element not found!");
+//        } else {
+//            System.out.println("Element Found");
+//        }
+
+        boolean isInserted = linkedList1.insertAfter(30, 40);
+        if (isInserted)
+            System.out.println("Element inserted successfully!");
+        else
+            System.out.println("Element not inserted!");
+        linkedList1.show();
     }
 }
 
