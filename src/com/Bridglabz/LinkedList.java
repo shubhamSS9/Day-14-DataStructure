@@ -6,79 +6,149 @@ public class LinkedList<T> {
     Node<T> head;
     Node<T> tail;
 
-    public void append(T data) {
-        Node<T> newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            tail.next = newNode;
-            tail = newNode;
+    public void push(T Data) {
+        Node<T> newNode = new Node<>(Data);
+        if(head==null){
+            head=newNode;
+            tail=newNode;
         }
-
-        Node currentNode = this.head;
-        while (currentNode.next != null) {
-            currentNode = currentNode.next;
+        else {
+            newNode.next=head;
+            head= newNode ;
         }
-
-        currentNode.next = newNode;
-
+    }
+    public void add(T data) {
+        Node<T> newNode= new Node<>(data);
+        if(head==null){
+            head=newNode;
+            tail=newNode;
+        }
+        else{
+            tail.next=newNode;
+            tail=newNode;
+        }
     }
 
-//	public T pop() {
-//		if (head == null)
-//			return null;
-//		T popData = head.data;
-//		head = head.next;
-//		return popData;
-//	}
-
-    public T popLast() {
-        if (head == null)
-            return null;
-        T popData = tail.data;
-        if (head == tail) {
-            head = null;
-            return popData;
-        }
+    public void display() {
         Node<T> temp = head;
-        while (temp.next != tail) {
-            temp = temp.next;
+        while(temp!= null)
+        {
+            System.out.print(temp.Data + "-> ");
+            temp= temp.next;
         }
-        temp.next = null;
-        tail = temp;
-        return popData;
     }
 
-    public Node<T> search(T searchData) {
-        Node<T> temp = head;
-        while (temp != null) {
-            if (temp.data.equals(searchData))
-                return temp;
-            temp = temp.next;
+    public void DeleteFirstElement(T deleted_element) {
+//        if(head == null)
+//        {
+//            System.out.println("List is empty");
+//        }
+        deleted_element= head.Data;
+        if(head==tail)
+        {
+            head=null;
+
         }
-        return null;
-    }
-
-
-//	public boolean insertAfter(T searchData, T insertData) {
-//		Node<T> newNode = new Node<>(insertData);
-//		Node<T> searchedNode = search(searchData);
-//		if (searchedNode != null) {
-//			newNode.next = searchedNode.next;
-//			searchedNode.next = newNode;
-//			return true;
-//		}
-//		return false;
-//	}
-
-    public void show() {
-        Node<T> temp = head;
-        while (temp != null) {
-            System.out.print(temp.getData() + " -> ");
-            temp = temp.next;
+        if(head!=null){
+            head=head.next;
         }
         System.out.println();
+        System.out.println("deleted element is "+deleted_element);
+    }
+
+
+    public void DeleteLastElement(T Delete_element) {
+        Node<T> temp = head;
+        Delete_element = tail.Data;
+        if (head == null) {
+            System.out.println("Lined list is empty");
+        }
+        if (head == tail) {
+            head = null;
+        } else {
+            while (temp.next != tail) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+            System.out.println();
+            System.out.println("Deleted element is " + Delete_element);
+        }
+    }
+
+
+    public void search(T search) {
+        Node <T> temp = head;
+        boolean flag= false;
+        while(temp!=null)
+        {
+            if(temp.Data==search)
+            {
+                flag=true;
+            }
+            temp=temp.next;
+        }
+        if(flag){
+
+            System.out.println("Element found");
+        }
+        else {
+            System.out.println("element not found");
+
+        }
+    }
+
+    public void InsertAnywhere(T insert, T search) {
+        Node<T> newNode= new Node<>(insert);
+        Node<T> temp = head;
+        Node<T> temp2 = head;
+        while(temp!=null & temp2!=null){
+            if(temp.Data==search){
+                temp2=temp2.next;
+//                System.out.println(temp.Data);  //30
+//                System.out.println(temp2.Data);   //70
+                temp.next=newNode;
+                newNode.next=temp2;
+//                newNode.next=temp;
+//                temp.next=newNode;
+                System.out.println("Data inserted successfully!!");
+            }
+            temp=temp.next;
+            temp2=temp2.next;
+        }
+    }
+
+    public void getSize() {
+        Node<T> temp = head;
+        int count=0;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
+        System.out.println("Size of the linked list is "+count);
+    }
+
+
+
+    public void deleteanyelement(T delete) {
+        Node<T> temp = head;
+        Node<T> temp2 = head;
+        Node<T> temp3 = head;
+        int count=0;
+        while(temp!=null & temp2!=null & temp3!=null){
+            count++;
+            if(count>2)
+            {
+                temp3=temp3.next;
+            }
+            if(temp.Data==delete){
+                temp2=temp2.next;
+                temp3.next=temp2;
+                System.out.println("Data deleted successfully!!");
+            }
+            temp=temp.next;
+            temp2=temp2.next;
+        }
     }
 
 }
